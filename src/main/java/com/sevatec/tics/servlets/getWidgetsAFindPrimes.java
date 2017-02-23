@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.client.RestTemplate;
 
 import com.sevatec.tics.domain.Widget;
+import com.sevatec.tics.properties.MicroserviceProperties;
 
 /**
  * Servlet implementation class getWidgetsA
@@ -35,7 +36,7 @@ public class getWidgetsAFindPrimes extends HttpServlet {
 		restCallGetWidgetAFindPrimes();
 		
 		request.setAttribute("findPrimesA", true);
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 
 	/**
@@ -47,7 +48,7 @@ public class getWidgetsAFindPrimes extends HttpServlet {
 	
 	private void restCallGetWidgetAFindPrimes() {
 		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getForObject("http://localhost:8080/TICSIIHelloWorld/microservice/getWidgetAFindPrimes", Object.class);
+		restTemplate.getForObject(MicroserviceProperties.getGetWidgetAFindPrimesURL(), Object.class);
 	}
 
 }

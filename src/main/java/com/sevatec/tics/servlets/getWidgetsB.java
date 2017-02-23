@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.client.RestTemplate;
 
 import com.sevatec.tics.domain.Widget;
+import com.sevatec.tics.properties.MicroserviceProperties;
 
 /**
  * Servlet implementation class getWidgetsA
@@ -51,7 +52,7 @@ public class getWidgetsB extends HttpServlet {
 	
 	private Widget restCallGetWidgetA() {
 		RestTemplate restTemplate = new RestTemplate();
-		Widget widgetB = restTemplate.getForObject("http://localhost:8081/demo/microservice/getWidgetB", Widget.class);
+		Widget widgetB = restTemplate.getForObject(MicroserviceProperties.getGetWidgetBURL(), Widget.class);
 		
 		return widgetB;
 	}
